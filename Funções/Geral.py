@@ -21,6 +21,14 @@ def preenche_frota(frota, nome_navio, linha, coluna, orientacao, tamanho):
         frota[nome_navio] = [posicao]
     return frota
 
-#Exercicio Posiciona Frota
+#Exercicio faz jogada 
+def faz_jogada(tabuleiro, linha, coluna):
+    if tabuleiro[linha][coluna] == 0:
+        tabuleiro[linha][coluna] = '-'
+    elif tabuleiro[linha][coluna] == 1:
+        tabuleiro[linha][coluna] = 'X'
+    return tabuleiro
+
+#Exercicio Posiciona Frota erros
 def posiciona_frota(informacoes_navios):
     posicoes = preenche_frota(informacoes_navios)
