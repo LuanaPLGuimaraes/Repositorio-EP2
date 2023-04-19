@@ -30,5 +30,23 @@ def faz_jogada(tabuleiro, linha, coluna):
     return tabuleiro
 
 #Exercicio Posiciona Frota
-def posiciona_frota(informacoes_navios):
-    posicoes = preenche_frota(informacoes_navios)
+def posiciona_frota(posicoes):
+    tabuleiro = [
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
+
+    for navios in posicoes.values():
+        for i in range(len(navios)):
+            for j in range(len(navios[i])):
+                tabuleiro[navios[i][j][0]][navios[i][j][1]] = 1
+
+    return tabuleiro 
