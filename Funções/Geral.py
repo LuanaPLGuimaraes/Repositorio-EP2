@@ -29,6 +29,6 @@ def faz_jogada(tabuleiro, linha, coluna):
         tabuleiro[linha][coluna] = 'X'
     return tabuleiro
 
-#Exercicio Posiciona Frota MUDANDO
+#Exercicio Posiciona Frota
 def posiciona_frota(informacoes_navios):
     posicoes = preenche_frota(informacoes_navios)
