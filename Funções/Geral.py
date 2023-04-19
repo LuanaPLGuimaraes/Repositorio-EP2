@@ -69,36 +69,17 @@ def afundados(frota, tabuleiro):
     return quantidade_afundados
 
 #Exercicio posicao valida
-def posicao_valida(ja_posicionados, linha, coluna, orientacao, tamanho):
-    deseja = define_posicoes(linha, coluna, orientacao, tamanho)
-    valor = False
+def posicao_valida(posicionados, linha, coluna, orientacao, tamanho):
+    novo = define_posicoes(linha, coluna, orientacao, tamanho)
 
-    for posicoes in ja_posicionados.values():
-        for i in range(len(posicoes)):
-            for j in range(len(posicoes[i])):
-                for k in range(len(deseja)):
-                    if deseja[k][0] == posicoes[i][j][0] and deseja[k][1] == posicoes[i][j][1]:
-                        return False
-                    else:
-                        valor = True
-
-    return valor
-                
-
-print(posicao_valida({
-    "navio-tanque":[
-      [[6,1],[6,2],[6,3]],
-      [[4,7],[5,7],[6,7]]
-    ],
-    "contratorpedeiro":[
-      [[1,1],[2,1]],
-      [[2,3],[3,3]],
-      [[9,1],[9,2]]
-    ],
-    "submarino": [
-      [[0,3]],
-      [[4,5]],
-      [[8,9]],
-      [[8,4]]
-    ],
-}, 1,5,'horizontal',4))
+    for posicao in novo:
+        if posicao[0] > 9 or posicao[1] > 9:
+            return False
+        else:
+            for ocupados in posicionados.values():
+                for i in ocupados:
+                    for j in i:
+                        if posicao[0] == j[0] and posicao[1] == j[1]:
+                            return False
+                        
+    return True
