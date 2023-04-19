@@ -50,3 +50,38 @@ def posiciona_frota(posicoes):
                 tabuleiro[navios[i][j][0]][navios[i][j][1]] = 1
 
     return tabuleiro 
+
+#Exercicio posicao valida
+def posicao_valida(ja_posicionados, linha, coluna, orientacao, tamanho):
+    deseja = define_posicoes(linha, coluna, orientacao, tamanho)
+    valor = False
+
+    for posicoes in ja_posicionados.values():
+        for i in range(len(posicoes)):
+            for j in range(len(posicoes[i])):
+                for k in range(len(deseja)):
+                    if deseja[k][0] == posicoes[i][j][0] and deseja[k][1] == posicoes[i][j][1]:
+                        return False
+                    else:
+                        valor = True
+
+    return valor
+                
+
+print(posicao_valida({
+    "navio-tanque":[
+      [[6,1],[6,2],[6,3]],
+      [[4,7],[5,7],[6,7]]
+    ],
+    "contratorpedeiro":[
+      [[1,1],[2,1]],
+      [[2,3],[3,3]],
+      [[9,1],[9,2]]
+    ],
+    "submarino": [
+      [[0,3]],
+      [[4,5]],
+      [[8,9]],
+      [[8,4]]
+    ],
+}, 1,5,'horizontal',4))
