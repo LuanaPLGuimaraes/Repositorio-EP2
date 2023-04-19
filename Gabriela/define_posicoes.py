@@ -7,5 +7,4 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
         elif orientacao=='horizontal':
             posicao.append([linha, coluna])
             coluna+=1
-    print(posicao)
     return posicao
