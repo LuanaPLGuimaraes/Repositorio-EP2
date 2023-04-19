@@ -8,3 +8,4 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
             posicao.append([linha, coluna])
             coluna+=1
     print(posicao)
+    return posicao
