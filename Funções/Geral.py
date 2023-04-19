@@ -50,3 +50,23 @@ def afundados(frota, tabuleiro):
                 print(contador_tamanho)
     print(quantidade_afundados)
     return quantidade_afundados
+def posiciona_frota(posicoes):
+    tabuleiro = [
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
+
+    for navios in posicoes.values():
+        for i in range(len(navios)):
+            for j in range(len(navios[i])):
+                tabuleiro[navios[i][j][0]][navios[i][j][1]] = 1
+
+    return tabuleiro 
