@@ -1,1 +1,1 @@
-print('Ex preenche frota')
+#Resolvendo exercicio Preenche Frota
