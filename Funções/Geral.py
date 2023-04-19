@@ -31,4 +31,4 @@ def faz_jogada(tabuleiro, linha, coluna):
 
 #Exercicio Posiciona Frota MUDANDO
 def posiciona_frota(informacoes_navios):
-    posicionados = preenche_frota(informacoes_navios)
+    posicoes = preenche_frota(informacoes_navios)
