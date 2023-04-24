@@ -83,3 +83,108 @@ def posicao_valida(posicionados, linha, coluna, orientacao, tamanho):
                             return False
                         
     return True
+
+
+
+# Exercicio posicionando frota
+# 1 porta-aviao, tamanho 4
+# 2 navio-tanque, tamanho 3
+# 3 contratorpedeiro, tamanho 2
+# 4 submarinos, tamanho 1
+
+frota = {
+    "porta-aviões":[],
+    "navio-tanque":[],
+    "contratorpedeiro":[],
+    "submarino": [],
+}
+
+print('Insira as informações referentes ao navio porta-aviões que possui tamanho 4')
+
+linha = float(input('Qual linha?'))
+coluna = float(input('Qual coluna?'))
+orientacao = float(input('Qual orientação?'))
+if orientacao == 1:
+    orientacao = 'vertical'
+if orientacao == 2:
+    orientacao = 'horizontal'
+
+valido = posicao_valida(frota, linha, coluna, orientacao, 4)
+
+if valido == True:
+    frota = preenche_frota(frota, 'porta-aviões', linha, coluna, orientacao, 4)
+
+else:
+    print('Esta posição não está válida')
+    print('Insira as informações referentes ao navio porta-aviões que possui tamanho 4')
+    linha = float(input('Qual linha?'))
+    coluna = float(input('Qual coluna?'))
+
+for i in range(2):
+    print('Insira as informações referentes ao navio navio-tanque que possui tamanho 3')
+
+    linha = float(input('Qual linha?'))
+    coluna = float(input('Qual coluna?'))
+    orientacao = float(input('Qual orientação?'))
+    if orientacao == 1:
+        orientacao = 'vertical'
+    if orientacao == 2:
+        orientacao = 'horizontal'
+
+    valido = posicao_valida(frota, linha, coluna, orientacao, 3)
+
+    if valido == True:
+        frota = preenche_frota(frota, 'navio-tanque', linha, coluna, orientacao, 3)
+
+    else:
+        print('Esta posição não está válida')
+        print('Insira as informações referentes ao navio navio-tanque que possui tamanho 3')
+        linha = float(input('Qual linha?'))
+        coluna = float(input('Qual coluna?'))
+        orientacao = float(input('Qual orientação?'))
+        
+
+for i in range(3):
+    print('Insira as informações referentes ao navio contratorpedeiro que possui tamanho 2')
+
+    linha = float(input('Qual linha?'))
+    coluna = float(input('Qual coluna?'))
+    orientacao = float(input('Qual orientação?'))
+    if orientacao == 1:
+        orientacao = 'vertical'
+    if orientacao == 2:
+        orientacao = 'horizontal'
+
+    valido = posicao_valida(frota, linha, coluna, orientacao, 2)
+
+    if valido == True:
+        frota = preenche_frota(frota, 'contratorpedeiro', linha, coluna, orientacao, 2)
+
+    else:
+        print('Esta posição não está válida')
+        print('Insira as informações referentes ao navio navio-tanque que possui tamanho 2')
+        linha = float(input('Qual linha?'))
+        coluna = float(input('Qual coluna?'))
+        orientacao = float(input('Qual orientação?'))
+
+
+for i in range(4):
+    print('Insira as informações referentes ao navio submarino que possui tamanho 1')
+
+    linha = float(input('Qual linha?'))
+    coluna = float(input('Qual coluna?'))
+    orientacao = 'horizontal'
+    
+    valido = posicao_valida(frota, linha, coluna, orientacao, 1)
+
+    if valido == True:
+        frota = preenche_frota(frota, 'submarino', linha, coluna, orientacao, 1)
+
+    else:
+        print('Esta posição não está válida')
+        print('Insira as informações referentes ao navio navio-tanque que possui tamanho 1')
+        linha = float(input('Qual linha?'))
+        coluna = float(input('Qual coluna?'))
+        orientacao = float(input('Qual orientação?'))
+
+print(frota)
