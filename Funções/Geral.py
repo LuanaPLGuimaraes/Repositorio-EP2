@@ -214,11 +214,13 @@ while jogando == True:
             texto += f'{linha}| {jogador_info}|     {linha}| {oponente_info}|\n'
         return texto
     
+    tabuleiro = monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente)
+    
     lista_linha=[]
     lista_coluna=[]
 
     linha_ataque = int(input('Qual linha deseja atacar?'))
-
+    
     if linha_ataque < 0 or linha_ataque > 9: #confere se a linha é válida
         print('Linha inválida!')
         linha_ataque = int(input('Qual linha deseja atacar?'))
