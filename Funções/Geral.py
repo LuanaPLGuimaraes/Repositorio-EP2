@@ -195,12 +195,13 @@ frota_oponente = {
     ]
 }
 
-tabuleiro_jogador=posiciona_frota(frota) #posicionando as frotas do jogador
-tabuleiro_oponente=posiciona_frota(frota_oponente) #posicionando as frotas do oponente
-
 jogando = True
 
 while jogando == True:
+
+    tabuleiro_jogador=posiciona_frota(frota) #posicionando as frotas do jogador
+    tabuleiro_oponente=posiciona_frota(frota_oponente) #posicionando as frotas do oponente
+
     #montando o tabuleiro do jogo
     def monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente):
         texto = ''
@@ -220,31 +221,25 @@ while jogando == True:
 
     if linha_ataque < 0 or linha_ataque > 9: #confere se a linha é válida
         print('Linha inválida!')
-        linha_ataque=int(input('Qual linha atacar?'))
+        linha_ataque = int(input('Qual linha deseja atacar?'))
 
-    coluna_ataque=int(input('Qual coluna atacar?'))
+    coluna_ataque = int(input('Qual coluna deseja atacar?'))
 
     if coluna_ataque < 0 or coluna_ataque > 9: #confere se a coluna é válida
         print('Coluna inválida!')
-        coluna_ataque=int(input('Qual coluna atacar?'))
+        coluna_ataque = int(input('Qual coluna deseja atacar?'))
 
     for i in range(len(lista_coluna)): #jogando 
         if lista_coluna[i] == coluna_ataque and lista_linha[i] == linha_ataque:
             print('A posição linha {0} e coluna {1} já foi informada anteriormente!'.format(linha_ataque, coluna_ataque))
-            linha_ataque=int(input('Qual linha atacar?'))
-            while linha_ataque<0 or linha_ataque>9:
-                print('Linha inválida!')
-                linha_ataque=int(input('Qual linha atacar?'))
-            coluna_ataque=int(input('Qual coluna atacar?'))
-            while coluna_ataque<0 or coluna_ataque>9:
-                print('Coluna inválida!')
-                coluna_ataque=int(input('Qual coluna atacar?'))
+            
     lista_coluna.append(coluna_ataque)
     lista_linha.append(linha_ataque)
 
-    tabuleiro_oponente=faz_jogada(tabuleiro_oponente, linha_ataque, coluna_ataque)
+    novo_tabuleiro_oponente=faz_jogada(tabuleiro_oponente, linha_ataque, coluna_ataque)
 
-    verifica_se_venceu=afundados(frota_oponente, tabuleiro_oponente)
-    if verifica_se_venceu==10:
+    verifica_se_venceu=afundados(frota_oponente, novo_tabuleiro_oponente)
+    
+    if verifica_se_venceu == 10:
         print('Parabéns! Você derrubou todos os navios do seu oponente!')
         jogando=False
