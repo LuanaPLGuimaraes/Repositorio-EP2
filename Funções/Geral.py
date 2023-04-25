@@ -98,37 +98,38 @@ frota = {
     "contratorpedeiro":[],
     "submarino": [],
 }
-
-print('Insira as informações referentes ao navio porta-aviões que possui tamanho 4')
-
-linha = float(input('Qual linha?'))
-coluna = float(input('Qual coluna?'))
-orientacao = float(input('Qual orientação?'))
-if orientacao == 1:
-    orientacao = 'vertical'
-if orientacao == 2:
-    orientacao = 'horizontal'
-
-valido = posicao_valida(frota, linha, coluna, orientacao, 4)
-
-if valido == True:
-    frota = preenche_frota(frota, 'porta-aviões', linha, coluna, orientacao, 4)
-
-else:
-    print('Esta posição não está válida')
+while len(frota['porta-aviões']) == []:
     print('Insira as informações referentes ao navio porta-aviões que possui tamanho 4')
-    linha = float(input('Qual linha?'))
-    coluna = float(input('Qual coluna?'))
 
-for i in range(2):
+    linha = int(input('Qual linha?'))
+    coluna = int(input('Qual coluna?'))
+    orientacao = input('Qual orientação?')
+    if orientacao == '1':
+        orientacao = 'vertical'
+    if orientacao == '2':
+        orientacao = 'horizontal'
+
+    valido = posicao_valida(frota, linha, coluna, orientacao, 4)
+
+    if valido == True:
+        frota = preenche_frota(frota, 'porta-aviões', linha, coluna, orientacao, 4)
+
+    else:
+        print('Esta posição não está válida')
+        print('Insira as informações referentes ao navio porta-aviões que possui tamanho 4')
+        linha = int(input('Qual linha?'))
+        coluna = input('Qual coluna?')
+
+
+while len(frota['navio-tanque']) < 2:
     print('Insira as informações referentes ao navio navio-tanque que possui tamanho 3')
 
-    linha = float(input('Qual linha?'))
-    coluna = float(input('Qual coluna?'))
-    orientacao = float(input('Qual orientação?'))
-    if orientacao == 1:
+    linha = int(input('Qual linha?'))
+    coluna = int(input('Qual coluna?'))
+    orientacao = input('Qual orientação?')
+    if orientacao == '1':
         orientacao = 'vertical'
-    if orientacao == 2:
+    if orientacao == '2':
         orientacao = 'horizontal'
 
     valido = posicao_valida(frota, linha, coluna, orientacao, 3)
@@ -139,20 +140,20 @@ for i in range(2):
     else:
         print('Esta posição não está válida')
         print('Insira as informações referentes ao navio navio-tanque que possui tamanho 3')
-        linha = float(input('Qual linha?'))
-        coluna = float(input('Qual coluna?'))
-        orientacao = float(input('Qual orientação?'))
+        linha = int(input('Qual linha?'))
+        coluna = int(input('Qual coluna?'))
+        orientacao = input('Qual orientação?')
         
 
-for i in range(3):
+while len(frota['contratorpedeiro']) < 3:
     print('Insira as informações referentes ao navio contratorpedeiro que possui tamanho 2')
 
-    linha = float(input('Qual linha?'))
-    coluna = float(input('Qual coluna?'))
-    orientacao = float(input('Qual orientação?'))
-    if orientacao == 1:
+    linha = int(input('Qual linha?'))
+    coluna = int(input('Qual coluna?'))
+    orientacao = input('Qual orientação?')
+    if orientacao == '1':
         orientacao = 'vertical'
-    if orientacao == 2:
+    if orientacao == '2':
         orientacao = 'horizontal'
 
     valido = posicao_valida(frota, linha, coluna, orientacao, 2)
@@ -163,16 +164,16 @@ for i in range(3):
     else:
         print('Esta posição não está válida')
         print('Insira as informações referentes ao navio navio-tanque que possui tamanho 2')
-        linha = float(input('Qual linha?'))
-        coluna = float(input('Qual coluna?'))
-        orientacao = float(input('Qual orientação?'))
+        linha = int(input('Qual linha?'))
+        coluna = int(input('Qual coluna?'))
+        orientacao = input('Qual orientação?')
 
 
-for i in range(4):
+while len(frota['submarino']) < 4:
     print('Insira as informações referentes ao navio submarino que possui tamanho 1')
 
-    linha = float(input('Qual linha?'))
-    coluna = float(input('Qual coluna?'))
+    linha = int(input('Qual linha?'))
+    coluna = int(input('Qual coluna?'))
     orientacao = 'horizontal'
     
     valido = posicao_valida(frota, linha, coluna, orientacao, 1)
@@ -183,8 +184,8 @@ for i in range(4):
     else:
         print('Esta posição não está válida')
         print('Insira as informações referentes ao navio navio-tanque que possui tamanho 1')
-        linha = float(input('Qual linha?'))
-        coluna = float(input('Qual coluna?'))
-        orientacao = float(input('Qual orientação?'))
+        linha = int(input('Qual linha?'))
+        coluna = int(input('Qual coluna?'))
+
 
 print(frota)
