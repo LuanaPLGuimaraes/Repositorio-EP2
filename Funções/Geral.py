@@ -195,12 +195,13 @@ frota_oponente = {
     ]
 }
 
-tabuleiro_jogador=posiciona_frota(frota)
-tabuleiro_oponente=posiciona_frota(frota_oponente)
+tabuleiro_jogador=posiciona_frota(frota) #posicionando as frotas do jogador
+tabuleiro_oponente=posiciona_frota(frota_oponente) #posicionando as frotas do oponente
 
 jogando = True
 
-while jogando==True:
+while jogando == True:
+    #montando o tabuleiro do jogo
     def monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente):
         texto = ''
         texto += '   0  1  2  3  4  5  6  7  8  9         0  1  2  3  4  5  6  7  8  9\n'
@@ -211,18 +212,24 @@ while jogando==True:
             oponente_info = '  '.join([info if str(info) in 'X-' else '0' for info in tabuleiro_oponente[linha]])
             texto += f'{linha}| {jogador_info}|     {linha}| {oponente_info}|\n'
         return texto
+    
     lista_linha=[]
     lista_coluna=[]
-    linha_ataque=int(input('Qual linha atacar?'))
-    while linha_ataque<0 or linha_ataque>9:
+
+    linha_ataque = int(input('Qual linha deseja atacar?'))
+
+    if linha_ataque < 0 or linha_ataque > 9: #confere se a linha é válida
         print('Linha inválida!')
         linha_ataque=int(input('Qual linha atacar?'))
+
     coluna_ataque=int(input('Qual coluna atacar?'))
-    while coluna_ataque<0 or coluna_ataque>9:
+
+    if coluna_ataque < 0 or coluna_ataque > 9: #confere se a coluna é válida
         print('Coluna inválida!')
         coluna_ataque=int(input('Qual coluna atacar?'))
-    for i in range(len(lista_coluna)):
-        if lista_coluna[i]==coluna_ataque and lista_linha[i]==linha_ataque:
+
+    for i in range(len(lista_coluna)): #jogando 
+        if lista_coluna[i] == coluna_ataque and lista_linha[i] == linha_ataque:
             print('A posição linha {0} e coluna {1} já foi informada anteriormente!'.format(linha_ataque, coluna_ataque))
             linha_ataque=int(input('Qual linha atacar?'))
             while linha_ataque<0 or linha_ataque>9:
