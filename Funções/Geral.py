@@ -64,8 +64,7 @@ def afundados(frota, tabuleiro):
                     contador_tamanho+=1
                 if contador_tamanho==len(l_posicoes[i]):
                     quantidade_afundados+=1  
-                print(contador_tamanho)
-    print(quantidade_afundados)
+
     return quantidade_afundados
 
 #Exercicio posicao valida
@@ -84,6 +83,17 @@ def posicao_valida(posicionados, linha, coluna, orientacao, tamanho):
                         
     return True
 
+#Montando tabuleiro 
+def monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente):
+        texto = ''
+        texto += '   0  1  2  3  4  5  6  7  8  9         0  1  2  3  4  5  6  7  8  9\n'
+        texto += '_______________________________      _______________________________\n'
+
+        for linha in range(len(tabuleiro_jogador)):
+            jogador_info = '  '.join([str(item) for item in tabuleiro_jogador[linha]])
+            oponente_info = '  '.join([info if str(info) in 'X-' else '0' for info in tabuleiro_oponente[linha]])
+            texto += f'{linha}| {jogador_info}|     {linha}| {oponente_info}|\n'
+        return texto
 
 
 # Exercicio posicionando frota
@@ -202,18 +212,9 @@ jogador_posicionado = posiciona_frota(frota)
 jogando = True
 
 while jogando == True:
-    def monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente):
-        texto = ''
-        texto += '   0  1  2  3  4  5  6  7  8  9         0  1  2  3  4  5  6  7  8  9\n'
-        texto += '_______________________________      _______________________________\n'
-
-        for linha in range(len(tabuleiro_jogador)):
-            jogador_info = '  '.join([str(item) for item in tabuleiro_jogador[linha]])
-            oponente_info = '  '.join([info if str(info) in 'X-' else '0' for info in tabuleiro_oponente[linha]])
-            texto += f'{linha}| {jogador_info}|     {linha}| {oponente_info}|\n'
-        return texto
     
     tabuleiros = (monta_tabuleiros(jogador_posicionado, oponente_posicionado))
+    print(tabuleiros)
 
     lista_linhas = []
     lista_colunas = []
