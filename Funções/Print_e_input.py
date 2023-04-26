@@ -136,7 +136,7 @@ while jogando == True:
         coluna = int(input('Qual coluna deseja atacar?'))
 
     if linha in lista_linhas and coluna in lista_colunas:
-        print('A posição linha {linha} e coluna {coluna} já foi informada anteriormente!')
+        print('A posição linha {0} e coluna {1} já foi informada anteriormente!'.format(linha, coluna))
 
     else:
         lista_linhas.append(linha)
@@ -166,7 +166,7 @@ while jogando == True:
                 lista_linhas_op.append(linha_op)
                 lista_colunas_op.append(coluna_op)
 
-                print('Seu oponente está atacando na linha {linha_op} e coluna {coluna_op}')
+                print('Seu oponente está atacando na linha {0} e coluna {1}'.format(linha_op,coluna_op))
 
                 novo_tabuleiro_jogador = faz_jogada(jogador_posicionado, linha_op, coluna_op)
 
