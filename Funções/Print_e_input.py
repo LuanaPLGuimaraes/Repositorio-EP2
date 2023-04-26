@@ -134,23 +134,25 @@ while jogando == True:
         print('Coluna inválida!')
         coluna = int(input('Qual coluna deseja atacar?'))
 
-    for i in range(len(lista_posicoes)):
-        while lista_posicoes[i][0] == linha and lista_posicoes[i][1] == coluna:
-            print('A posição linha {0} e coluna {1} já foi informada anteriormente!'.format(linha, coluna))
 
+    lista_pos = [linha, coluna]
+
+    while lista_pos in lista_posicoes:
+        print('A posição linha {0} e coluna {1} já foi informada anteriormente!'.format(linha, coluna))
+
+        linha = int(input('Qual linha deseja atacar?'))
+        while linha < 0 or linha > 9:
+            print('Linha inválida!')
             linha = int(input('Qual linha deseja atacar?'))
-            while linha < 0 or linha > 9:
-                print('Linha inválida!')
-                linha = int(input('Qual linha deseja atacar?'))
 
 
+        coluna = int(input('Qual coluna deseja atacar?'))
+        while coluna < 0 or coluna > 9:
+            print('Coluna inválida!')
             coluna = int(input('Qual coluna deseja atacar?'))
-            while coluna < 0 or coluna > 9:
-                print('Coluna inválida!')
-                coluna = int(input('Qual coluna deseja atacar?'))
 
 
-    lista_posicoes.append([linha,coluna])
+    lista_posicoes.append(lista_pos)
 
 
     oponente_posicionado = faz_jogada(oponente_posicionado, linha, coluna)
@@ -165,14 +167,15 @@ while jogando == True:
     else:
         linha_op = sorteia(0,9)
         coluna_op = sorteia(0,9)
-    
-        for i in range(len(lista_posicoes_op)):
-            while lista_posicoes_op[i][0] == linha_op and lista_posicoes_op[i][1] == coluna_op:
-                linha_op = sorteia(0,9)
-                coluna_op = sorteia(0,9)
+
+        lista_pos_op = [linha_op, coluna_op]
+
+        while lista_pos_op in lista_posicoes_op:
+            linha_op = sorteia(0,9)
+            coluna_op = sorteia(0,9)
 
         
-        lista_posicoes_op.append([linha_op, coluna_op])
+        lista_posicoes_op.append(lista_pos_op)
 
         print('Seu oponente está atacando na linha {0} e coluna {1}'.format(linha_op,coluna_op))
 
