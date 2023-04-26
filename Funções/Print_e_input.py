@@ -168,8 +168,6 @@ while jogando == True:
     
         for i in range(len(lista_posicoes_op)):
             while lista_posicoes_op[i][0] == linha_op and lista_posicoes_op[i][1] == coluna_op:
-                print('A posição linha {0} e coluna {1} já foi informada anteriormente!'.format(linha, coluna))
-
                 linha_op = sorteia(0,9)
                 coluna_op = sorteia(0,9)
 
