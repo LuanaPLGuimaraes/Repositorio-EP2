@@ -115,63 +115,73 @@ oponente_posicionado = posiciona_frota(frota_oponente)
 jogador_posicionado = posiciona_frota(frota)
 
 jogando = True
+lista_posicoes = []
+lista_posicoes_op = []
 
 while jogando == True:
     
     tabuleiros = (monta_tabuleiros(jogador_posicionado, oponente_posicionado))
     print(tabuleiros)
 
-    lista_linhas = []
-    lista_colunas = []
-
     linha = int(input('Qual linha deseja atacar?'))
-    if linha < 0 or linha > 9:
+    while linha < 0 or linha > 9:
         print('Linha inválida!')
         linha = int(input('Qual linha deseja atacar?'))
 
 
     coluna = int(input('Qual coluna deseja atacar?'))
-    if coluna < 0 or coluna > 9:
+    while coluna < 0 or coluna > 9:
         print('Coluna inválida!')
         coluna = int(input('Qual coluna deseja atacar?'))
 
-    if linha in lista_linhas and coluna in lista_colunas:
-        print('A posição linha {0} e coluna {1} já foi informada anteriormente!'.format(linha, coluna))
+    for i in range(len(lista_posicoes)):
+        while lista_posicoes[i][0] == linha and lista_posicoes[i][1] == coluna:
+            print('A posição linha {0} e coluna {1} já foi informada anteriormente!'.format(linha, coluna))
 
+            linha = int(input('Qual linha deseja atacar?'))
+            while linha < 0 or linha > 9:
+                print('Linha inválida!')
+                linha = int(input('Qual linha deseja atacar?'))
+
+
+            coluna = int(input('Qual coluna deseja atacar?'))
+            while coluna < 0 or coluna > 9:
+                print('Coluna inválida!')
+                coluna = int(input('Qual coluna deseja atacar?'))
+
+
+    lista_posicoes.append([linha,coluna])
+
+
+    oponente_posicionado = faz_jogada(oponente_posicionado, linha, coluna)
+
+    verifica_venceu = afundados(frota_oponente, oponente_posicionado)
+
+    if verifica_venceu == 10:
+        print('Parabéns! Você derrubou todos os navios do seu oponente!')
+        jogando = False
+
+    #COMO NAO VENCEU: JOGADA OPONENTE
     else:
-        lista_linhas.append(linha)
-        lista_colunas.append(coluna)
+        linha_op = sorteia(0,9)
+        coluna_op = sorteia(0,9)
+    
+        for i in range(len(lista_posicoes_op)):
+            while lista_posicoes_op[i][0] == linha_op and lista_posicoes_op[i][1] == coluna_op:
+                print('A posição linha {0} e coluna {1} já foi informada anteriormente!'.format(linha, coluna))
 
-        novo_tabuleiro_oponente = faz_jogada(oponente_posicionado, linha, coluna)
-
-        verifica_venceu = afundados(frota_oponente, novo_tabuleiro_oponente)
-
-        if verifica_venceu == 10:
-            print('Parabéns! Você derrubou todos os navios do seu oponente!')
-            jogando = False
-
-        #COMO NAO VENCEU: JOGADA OPONENTE
-        else:
-            lista_linhas_op = []
-            lista_colunas_op = []
-
-            linha_op = sorteia(0,9)
-            coluna_op = sorteia(0,9)
-        
-            if linha_op in lista_linhas_op and coluna_op in lista_colunas_op:
                 linha_op = sorteia(0,9)
                 coluna_op = sorteia(0,9)
 
-            else:
-                lista_linhas_op.append(linha_op)
-                lista_colunas_op.append(coluna_op)
+        
+        lista_posicoes_op.append([linha_op, coluna_op])
 
-                print('Seu oponente está atacando na linha {0} e coluna {1}'.format(linha_op,coluna_op))
+        print('Seu oponente está atacando na linha {0} e coluna {1}'.format(linha_op,coluna_op))
 
-                novo_tabuleiro_jogador = faz_jogada(jogador_posicionado, linha_op, coluna_op)
+        jogador_posicionado = faz_jogada(jogador_posicionado, linha_op, coluna_op)
 
-                verifica_venceu_op = afundados(frota, novo_tabuleiro_jogador)
+        verifica_venceu_op = afundados(frota, jogador_posicionado)
 
-                if verifica_venceu_op == 10:
-                    print('Xi! O oponente derrubou toda a sua frota =(')
-                    jogando = False
+        if verifica_venceu_op == 10:
+            print('Xi! O oponente derrubou toda a sua frota =(')
+            jogando = False
