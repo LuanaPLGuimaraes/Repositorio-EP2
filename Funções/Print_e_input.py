@@ -1,6 +1,7 @@
 from Funcoes import *
+from random import randint as sorteia 
 
-# Exercicio posicionando frota
+# POSICIONANDO AMBAS FROTAS NO TABULEIRO
 # 1 porta-aviao, tamanho 4
 # 2 navio-tanque, tamanho 3
 # 3 contratorpedeiro, tamanho 2
@@ -87,7 +88,7 @@ while len(frota['submarino']) < 4:
         print('Esta posição não está válida!')
 
 
-#jogadas do jogador
+#JOGADAS DO JOGADOR
 
 frota_oponente = {
     'porta-aviões': [
@@ -148,3 +149,29 @@ while jogando == True:
         if verifica_venceu == 10:
             print('Parabéns! Você derrubou todos os navios do seu oponente!')
             jogando = False
+
+        #COMO NAO VENCEU: JOGADA OPONENTE
+        else:
+            lista_linhas_op = []
+            lista_colunas_op = []
+
+            linha_op = sorteia(0,9)
+            coluna_op = sorteia(0,9)
+        
+            if linha_op in lista_linhas_op and coluna_op in lista_colunas_op:
+                linha_op = sorteia(0,9)
+                coluna_op = sorteia(0,9)
+
+            else:
+                lista_linhas_op.append(linha_op)
+                lista_colunas_op.append(coluna_op)
+
+                print('Seu oponente está atacando na linha {linha_op} e coluna {coluna_op}')
+
+                novo_tabuleiro_jogador = faz_jogada(jogador_posicionado, linha_op, coluna_op)
+
+                verifica_venceu_op = afundados(frota, novo_tabuleiro_jogador)
+
+                if verifica_venceu_op == 10:
+                    print('Xi! O oponente derrubou toda a sua frota =(')
+                    jogando = False
