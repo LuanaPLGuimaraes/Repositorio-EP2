@@ -87,7 +87,6 @@ while len(frota['submarino']) < 4:
     else:
         print('Esta posição não está válida!')
 
-
 #JOGADAS DO JOGADOR
 
 frota_oponente = {
