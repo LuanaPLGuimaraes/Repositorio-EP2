@@ -118,7 +118,7 @@ jogando = True
 lista_posicoes = []
 lista_posicoes_op = []
 
-while jogando == True:
+while jogando:
     
     tabuleiros = (monta_tabuleiros(jogador_posicionado, oponente_posicionado))
     print(tabuleiros)
@@ -164,26 +164,26 @@ while jogando == True:
         jogando = False
 
     #COMO NAO VENCEU: JOGADA OPONENTE
-
-    linha_op = sorteia(0,9)
-    coluna_op = sorteia(0,9)
-
-    lista_pos_op = [linha_op, coluna_op]
-
-    while lista_pos_op in lista_posicoes_op:
+    else:
         linha_op = sorteia(0,9)
         coluna_op = sorteia(0,9)
+
         lista_pos_op = [linha_op, coluna_op]
 
+        while lista_pos_op in lista_posicoes_op:
+            linha_op = sorteia(0,9)
+            coluna_op = sorteia(0,9)
+            lista_pos_op = [linha_op, coluna_op]
 
-    lista_posicoes_op.append(lista_pos_op)
 
-    print('Seu oponente está atacando na linha {0} e coluna {1}'.format(linha_op,coluna_op))
+        lista_posicoes_op.append(lista_pos_op)
 
-    jogador_posicionado = faz_jogada(jogador_posicionado, linha_op, coluna_op)
+        print('Seu oponente está atacando na linha {0} e coluna {1}'.format(linha_op,coluna_op))
 
-    verifica_venceu_op = afundados(frota, jogador_posicionado)
+        jogador_posicionado = faz_jogada(jogador_posicionado, linha_op, coluna_op)
 
-    if verifica_venceu_op == 10:
-        print('Xi! O oponente derrubou toda a sua frota =(')
-        jogando = False
+        verifica_venceu_op = afundados(frota, jogador_posicionado)
+
+        if verifica_venceu_op == 10:
+            print('Xi! O oponente derrubou toda a sua frota =(')
+            jogando = False
