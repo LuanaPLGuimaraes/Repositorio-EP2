@@ -173,6 +173,7 @@ while jogando == True:
     while lista_pos_op in lista_posicoes_op:
         linha_op = sorteia(0,9)
         coluna_op = sorteia(0,9)
+        lista_pos_op = [linha_op, coluna_op]
 
 
     lista_posicoes_op.append(lista_pos_op)
