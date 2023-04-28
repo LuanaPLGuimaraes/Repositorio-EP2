@@ -134,9 +134,9 @@ while jogando:
         coluna = int(input('Qual coluna deseja atacar?'))
 
 
-    lista_pos = [linha, coluna]
+    # lista_pos = [linha, coluna]
 
-    while lista_pos in lista_posicoes:
+    while [linha, coluna] in lista_posicoes:
         print('A posição linha {0} e coluna {1} já foi informada anteriormente!'.format(linha, coluna))
 
         linha = int(input('Qual linha deseja atacar?'))
@@ -144,15 +144,13 @@ while jogando:
             print('Linha inválida!')
             linha = int(input('Qual linha deseja atacar?'))
 
-
         coluna = int(input('Qual coluna deseja atacar?'))
         while coluna < 0 or coluna > 9:
             print('Coluna inválida!')
             coluna = int(input('Qual coluna deseja atacar?'))
 
-
-    lista_posicoes.append(lista_pos)
-
+    #lista_pos = [linha, coluna]
+    lista_posicoes.append([linha, coluna])
 
     oponente_posicionado = faz_jogada(oponente_posicionado, linha, coluna)
 
@@ -167,15 +165,13 @@ while jogando:
         linha_op = sorteia(0,9)
         coluna_op = sorteia(0,9)
 
-        lista_pos_op = [linha_op, coluna_op]
-
-        while lista_pos_op in lista_posicoes_op:
+        while [linha_op, coluna_op] in lista_posicoes_op:
             linha_op = sorteia(0,9)
             coluna_op = sorteia(0,9)
+            
             lista_pos_op = [linha_op, coluna_op]
 
-
-        lista_posicoes_op.append(lista_pos_op)
+        lista_posicoes_op.append([linha_op, coluna_op])
 
         print('Seu oponente está atacando na linha {0} e coluna {1}'.format(linha_op,coluna_op))
 
