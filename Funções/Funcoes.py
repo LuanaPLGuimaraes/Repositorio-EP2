@@ -70,16 +70,20 @@ def afundados(frota, tabuleiro):
 #Exercicio posicao valida
 def posicao_valida(posicionados, linha, coluna, orientacao, tamanho):
     novo = define_posicoes(linha, coluna, orientacao, tamanho)
+    ocupados = []
 
+    for ocupado in posicionados.values():
+                for i in ocupado:
+                    for j in i:
+                        ocupados.append(j)
+                    
     for posicao in novo:
         if posicao[0] > 9 or posicao[1] > 9:
             return False
-        else:
-            for ocupados in posicionados.values():
-                for i in ocupados:
-                    for j in i:
-                        if posicao[0] == j[0] and posicao[1] == j[1]:
-                            return False
+    
+    for posicao in novo:
+        if posicao in ocupados:
+            return False
                         
     return True
 
