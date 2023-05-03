@@ -16,9 +16,9 @@ frota = {
 while frota['porta-aviões'] == []:
     print('Insira as informações referentes ao navio porta-aviões que possui tamanho 4')
 
-    linha = int(input('Qual linha?'))
-    coluna = int(input('Qual coluna?'))
-    orientacao = input('Qual orientação?')
+    linha = int(input('Linha: '))
+    coluna = int(input('Coluna: '))
+    orientacao = input('Orientação: [1] Vertical [2] Horizontal ')
     if orientacao == '1':
         orientacao = 'vertical'
     if orientacao == '2':
@@ -36,9 +36,9 @@ while frota['porta-aviões'] == []:
 while len(frota['navio-tanque']) < 2:
     print('Insira as informações referentes ao navio navio-tanque que possui tamanho 3')
 
-    linha = int(input('Qual linha?'))
-    coluna = int(input('Qual coluna?'))
-    orientacao = input('Qual orientação?')
+    linha = int(input('Linha: '))
+    coluna = int(input('Coluna: '))
+    orientacao = input('Orientação: [1] Vertical [2] Horizontal ')
     if orientacao == '1':
         orientacao = 'vertical'
     if orientacao == '2':
@@ -56,9 +56,9 @@ while len(frota['navio-tanque']) < 2:
 while len(frota['contratorpedeiro']) < 3:
     print('Insira as informações referentes ao navio contratorpedeiro que possui tamanho 2')
 
-    linha = int(input('Qual linha?'))
-    coluna = int(input('Qual coluna?'))
-    orientacao = input('Qual orientação?')
+    linha = int(input('Linha: '))
+    coluna = int(input('Coluna: '))
+    orientacao = input('Orientação: [1] Vertical [2] Horizontal ')
     if orientacao == '1':
         orientacao = 'vertical'
     if orientacao == '2':
@@ -75,8 +75,8 @@ while len(frota['contratorpedeiro']) < 3:
 while len(frota['submarino']) < 4:
     print('Insira as informações referentes ao navio submarino que possui tamanho 1')
 
-    linha = int(input('Qual linha?'))
-    coluna = int(input('Qual coluna?'))
+    linha = int(input('Linha: '))
+    coluna = int(input('Coluna: '))
     orientacao = 'horizontal'
     
     valido = posicao_valida(frota, linha, coluna, orientacao, 1)
