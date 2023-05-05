@@ -1,12 +1,6 @@
 from Funcoes import *
 from random import randint as sorteia 
 
-# POSICIONANDO AMBAS FROTAS NO TABULEIRO
-# 1 porta-aviao, tamanho 4
-# 2 navio-tanque, tamanho 3
-# 3 contratorpedeiro, tamanho 2
-# 4 submarinos, tamanho 1
-
 frota = {
     "porta-aviões":[],
     "navio-tanque":[],
@@ -21,7 +15,7 @@ while frota['porta-aviões'] == []:
     orientacao = input('Orientação: [1] Vertical [2] Horizontal ')
     if orientacao == '1':
         orientacao = 'vertical'
-    if orientacao == '2':
+    else:
         orientacao = 'horizontal'
 
     valido = posicao_valida(frota, linha, coluna, orientacao, 4)
@@ -41,7 +35,7 @@ while len(frota['navio-tanque']) < 2:
     orientacao = input('Orientação: [1] Vertical [2] Horizontal ')
     if orientacao == '1':
         orientacao = 'vertical'
-    if orientacao == '2':
+    else:
         orientacao = 'horizontal'
 
     valido = posicao_valida(frota, linha, coluna, orientacao, 3)
@@ -61,7 +55,7 @@ while len(frota['contratorpedeiro']) < 3:
     orientacao = input('Orientação: [1] Vertical [2] Horizontal ')
     if orientacao == '1':
         orientacao = 'vertical'
-    if orientacao == '2':
+    else:
         orientacao = 'horizontal'
 
     valido = posicao_valida(frota, linha, coluna, orientacao, 2)
