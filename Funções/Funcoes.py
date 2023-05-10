@@ -13,10 +13,8 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
 #Exercicio preenchendo frota com base no definindo posicoes
 def preenche_frota(frota, nome_navio, linha, coluna, orientacao, tamanho):
     posicao= define_posicoes(linha, coluna, orientacao, tamanho)
-    
-    if nome_navio in frota.keys():
+    if nome_navio in frota:
         frota[nome_navio].append(posicao)
-
     else:
         frota[nome_navio] = [posicao]
     return frota
@@ -73,18 +71,14 @@ def posicao_valida(posicionados, linha, coluna, orientacao, tamanho):
     ocupados = []
 
     for ocupado in posicionados.values():
-                for i in ocupado:
-                    for j in i:
-                        ocupados.append(j)
+        for i in ocupado:
+            for j in i:
+                ocupados.append(j)
                     
     for posicao in novo:
-        if posicao[0] > 9 or posicao[1] > 9:
+        if posicao[0] > 9 or posicao[1] > 9 or posicao in ocupados:
             return False
-    
-    for posicao in novo:
-        if posicao in ocupados:
-            return False
-                        
+                 
     return True
 
 #Montando tabuleiro 
